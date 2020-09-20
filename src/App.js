@@ -1,26 +1,64 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+
 import './App.css';
+import ButtonPlusMinus from "./ButtonsPlusMinus";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+    const [counters, setCounters] = useState([0, 0, 0, 0, 0, 0]);
+
+    const buttonPlus = (index) => {
+        const newArr = counters.map((el, i) => {
+            if (i === index) {
+                return el + 1;
+            }
+            return el;
+        })
+        setCounters(newArr);
+
+    }
+
+    const buttonMinus = (index) => {
+        const newArr2 = counters.map((el, i) => {
+            if (i === index) {
+                return el - 1;
+            }
+            return el;
+        })
+        setCounters(newArr2);
+    }
+
+    const buttonReset = (index) => {
+        const newArr3 = counters.map((el, i) => {
+            if (i === index) {
+                return 0;
+            }
+            return el;
+        })
+        setCounters(newArr3);
+    }
+
+    const deleteCounter = (index) => {
+        const deleter = counters.filter((el, i) => i !== index);
+        setCounters(deleter)
+    }
+
+
+
+
+
+    return (
+        <div className="App">
+            <header className="App-header">
+
+                {counters.map((el, index) => <ButtonPlusMinus deleteCounter={deleteCounter}  buttonReset={buttonReset} buttonMinus={buttonMinus} buttonPlus={buttonPlus}
+                                                              index={index} el={el}
+                                                              key={Math.random()}/>)}
+
+            </header>
+        </div>
+    );
 }
 
 export default App;
