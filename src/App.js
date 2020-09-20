@@ -16,7 +16,6 @@ function App() {
             return el;
         })
         setCounters(newArr);
-
     }
 
     const buttonMinus = (index) => {
@@ -29,6 +28,7 @@ function App() {
         setCounters(newArr2);
     }
 
+
     const buttonReset = (index) => {
         const newArr3 = counters.map((el, i) => {
             if (i === index) {
@@ -39,23 +39,17 @@ function App() {
         setCounters(newArr3);
     }
 
-    const deleteCounter = (index) => {
-        const deleter = counters.filter((el, i) => i !== index);
-        setCounters(deleter)
+
+    const buttonDelete = (index) => {
+        setCounters(counters.filter((el, i) => i !== index));
     }
-
-
-
 
 
     return (
         <div className="App">
             <header className="App-header">
-
-                {counters.map((el, index) => <ButtonPlusMinus deleteCounter={deleteCounter}  buttonReset={buttonReset} buttonMinus={buttonMinus} buttonPlus={buttonPlus}
-                                                              index={index} el={el}
-                                                              key={Math.random()}/>)}
-
+                {counters.map((el, index) => <ButtonPlusMinus buttonDelete={buttonDelete} buttonReset={buttonReset} buttonMinus={buttonMinus} buttonPlus={buttonPlus} el={el}
+                                                              index={index} key={Math.random()}/>)}
             </header>
         </div>
     );

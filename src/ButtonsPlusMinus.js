@@ -2,10 +2,11 @@ import React from "react";
 
 function ButtonPlusMinus(props) {
 
-    const counterElements = props.el;
+
+    const buttonsCounters = props.el;
 
     const buttonPlus = () => {
-        props.buttonPlus(props.index);
+        props.buttonPlus(props.index)
     }
 
     const buttonMinus = () => {
@@ -16,17 +17,18 @@ function ButtonPlusMinus(props) {
         props.buttonReset(props.index)
     }
 
-    const buttonDeleter = () => {
-        props.deleteCounter(props.index)
+    const buttonDelete = () => {
+        props.buttonDelete(props.index)
     }
+
 
     return (
         <div>
             <button onClick={buttonPlus}>+</button>
-            {counterElements}
+            {buttonsCounters}
             <button onClick={buttonMinus}>-</button>
             <button onClick={buttonReset}>Reset</button>
-            <button onClick={buttonDeleter}>Delete</button>
+            <button onClick={buttonDelete}>Delete</button>
         </div>
     );
 }
