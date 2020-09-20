@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 import './App.css';
 import ButtonPlusMinus from "./ButtonsPlusMinus";
+import AddButton from "./AddButton";
 
 function App() {
 
@@ -45,10 +46,22 @@ function App() {
     }
 
 
+    const addButton = (value) => {
+        const newArr5 = [...counters];
+        value = value ? value : 0;
+        newArr5.push(value)
+        setCounters(newArr5);
+    }
+
+
     return (
         <div className="App">
             <header className="App-header">
-                {counters.map((el, index) => <ButtonPlusMinus buttonDelete={buttonDelete} buttonReset={buttonReset} buttonMinus={buttonMinus} buttonPlus={buttonPlus} el={el}
+
+               <AddButton addButton={addButton}/>
+                <br/>
+                {counters.map((el, index) => <ButtonPlusMinus   buttonDelete={buttonDelete} buttonReset={buttonReset}
+                                                              buttonMinus={buttonMinus} buttonPlus={buttonPlus} el={el}
                                                               index={index} key={Math.random()}/>)}
             </header>
         </div>
